@@ -5,8 +5,8 @@ const int MAXSTONE = 30;
 class StonePile
 {
 	int stone;
-	StonePile * next;
 public:
+	StonePile * next;
 	StonePile();
 	int getStone();
 	~StonePile();
