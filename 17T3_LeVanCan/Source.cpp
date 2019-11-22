@@ -1,10 +1,10 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <random>
 #include <Windows.h>
+#include <time.h>
 using namespace std;
-const int maxstone = 9;
+const int maxstone = 30;
 static int n, status;
 int pile_pre;
 struct stonePile {
@@ -33,6 +33,7 @@ void menu();
 void guide();
 
 int main() {
+	srand(time(NULL));
 	int mode;
 	do {
 		menu();
@@ -56,9 +57,7 @@ int main() {
 }
 
 int random(int min, int max) {
-	random_device r;
-	uniform_int_distribution<int> distribution(min, max);
-	return distribution(r);
+	return rand() % max + min;
 }
 
 void create(int n, list &root) {
@@ -75,16 +74,16 @@ void create(int n, list &root) {
 
 void displayPile(list root) {
 	list temp = root;
-	cout << "\n+--------+-------+";
-	cout << "\n|   Dong | So soi|";
-	cout << "\n+--------+-------+";
+	cout << "\n+---------------+---------------+";
+	cout << "\n|       Dong    |     So soi    |";
+	cout << "\n+---------------+---------------+";
 	int i = 1;
 	while (temp != NULL) {
-		cout << "\n|\t" << i << "|\t" << temp->stone << "|";
+		cout << "\n|\t" << i << "\t|\t" << temp->stone << "\t|";
 		temp = temp->next;
 		i++;
 	}
-	cout << "\n+--------+-------+" << endl;
+	cout << "\n+---------------+---------------+" << endl;
 }
 
 int gieoxu() {
@@ -303,7 +302,7 @@ int end_game(list root) {
 	return 0;
 }
 
-void menu(){
+void menu() {
 	cout << "Main menu:" << endl;
 	cout << "\n1. One player";
 	cout << "\n2. Two players";
@@ -312,7 +311,7 @@ void menu(){
 	cout << "\n Lua chon: ";
 }
 
-void guide(){
+void guide() {
 	fstream f;
 	f.open("guide.txt", ios::in);
 	system("cls");
@@ -322,6 +321,5 @@ void guide(){
 		getline(f, line);
 		cout << line << endl;
 	}
-
 	f.close();
 }
