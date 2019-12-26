@@ -4,8 +4,8 @@
 #include <Windows.h>
 #include <time.h>
 using namespace std;
-const int maxstone = 30;
-static int n, status;
+const int maxstone = 10;
+int n, status;
 int pile_pre;
 struct stonePile {
 	int stone; // stone = soi
@@ -21,7 +21,7 @@ void displayPile(list root);
 int gieoxu();
 void sodongsoi();
 int sum_nim(list root);
-void player(list root);
+void player_turn(list root);
 int check_stone(list root, int k);
 int special_case(list root);
 int max_pile(list root, list &max);
@@ -40,10 +40,14 @@ int main() {
 		cin >> mode;
 		switch (mode) {
 		case 1:
+			system("cls");
 			player_vs_com();
+			root = NULL;
 			break;
 		case 2:
+			system("cls");
 			two_player_mode();
+			root = NULL;
 			break;
 		case 3:
 			guide();
@@ -75,7 +79,7 @@ void create(int n, list &root) {
 void displayPile(list root) {
 	list temp = root;
 	cout << "\n+---------------+---------------+";
-	cout << "\n|       Dong    |     So soi    |";
+	cout << "\n|     Dong      |     So soi    |";
 	cout << "\n+---------------+---------------+";
 	int i = 1;
 	while (temp != NULL) {
@@ -92,7 +96,7 @@ int gieoxu() {
 		Sleep(200);
 		cout << ".";
 	}
-	if (random(0, 1)) {
+	if (rand()%2 == 1) {
 		return 1;
 	}
 	else {
@@ -118,7 +122,7 @@ int sum_nim(list root) {
 	return s;
 }
 
-void player(list root) {
+void player_turn(list root) {
 	list temp = root;
 	int k, i, take;
 	do {
@@ -150,7 +154,7 @@ int check_stone(list root, int k) {
 
 int special_case(list root) {
 	int i = 0, j = 0;
-	int pos;
+	int pos = 0;
 	list temp = root;
 	while (temp != NULL) {
 		if (temp->stone == 1)
@@ -232,7 +236,6 @@ void two_player_mode() {
 		cout << "B di truoc" << endl;
 	}
 	do {
-		system("cls");
 		displayPile(root);
 		if (status == 0) {
 			cout << "Luot cua B" << endl;
@@ -240,7 +243,7 @@ void two_player_mode() {
 		else {
 			cout << "Luot cua A" << endl;
 		}
-		player(root);
+		player_turn(root);
 		end = end_game(root);
 		if (!end) {
 			status = !status;
@@ -267,7 +270,6 @@ void player_vs_com() {
 	}
 	system("pause");
 	do {
-		system("cls");
 		displayPile(root);
 		if (status == 0) {
 			cout << "Luot cua Computer" << endl;
@@ -276,7 +278,7 @@ void player_vs_com() {
 		}
 		else {
 			cout << "Luot cua ban" << endl;
-			player(root);
+			player_turn(root);
 		}
 		end = end_game(root);
 		if (!end) {
