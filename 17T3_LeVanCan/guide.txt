@@ -1,3 +1,11 @@
 Introduction:
-Nim is a mathematical game of strategy in which two players take turns removing (i.e., nimming) objects from distinct heaps or piles.
-On each turn, a player must remove at least one object, and may remove any number of objects provided they all come from the same heap/pile.
+	Tro choi NIM la mot tro choi theo luot. Co n dong soi, moi dong soi co 1 so vien soi. May se gieo xuc xac de xac dinh luot di dau tien. Nguoi choi lan luot boc soi trong dong soi minh chon. Moi luot it nhat 1 vien va nhieu nhat la boc het ca dong soi do.
+	Tro choi co 2 che do:
+		- Choi voi may.
+		- 2 nguoi choi voi nhau.
+Chu y:
+	- Nguoi choi khong duoc bo qua luot cua minh.
+	- Nguoi boc vien soi cuoi cung la nguoi thua. Vi vay can co chien thuat hop li de danh chien thang.
+
+Chuc ban choi game vui ve!!!
+

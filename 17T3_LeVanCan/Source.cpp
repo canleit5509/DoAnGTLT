@@ -8,7 +8,7 @@ const int maxstone = 10;
 int n, status;
 int pile_pre;
 struct stonePile {
-	int stone; // stone = soi
+	int stone; 
 	stonePile *next;
 };
 
@@ -153,6 +153,7 @@ int check_stone(list root, int k) {
 }
 
 int special_case(list root) {
+	// truong hop sap thang: khi chi co mot dong soi co 1 vien va mot dong soi nhieu hon 1 vien
 	int i = 0, j = 0;
 	int pos = 0;
 	list temp = root;
@@ -305,7 +306,7 @@ int end_game(list root) {
 }
 
 void menu() {
-	cout << "Main menu:" << endl;
+	cout << "Chao mung ban den voi Nim Game:" << endl;
 	cout << "\n1. One player";
 	cout << "\n2. Two players";
 	cout << "\n3. Guide";
